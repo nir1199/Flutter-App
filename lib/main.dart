@@ -61,7 +61,7 @@ class DrawerOnly extends StatelessWidget{
                            }
                          ),
                          ListTile(
-                           title:Text('practical 3'),
+                           title:Text('practical 4'),
                            onTap: (){
                              Navigator.pop(context);
                              Navigator.push(context,new MaterialPageRoute(builder :(context)=>new Practical4()));
