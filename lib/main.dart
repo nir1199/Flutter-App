@@ -52,7 +52,24 @@ class DrawerOnly extends StatelessWidget{
                          onTap: (){
                            Navigator.pop(context);
                            Navigator.push(context,new MaterialPageRoute(builder: (context)=>new Practical2()));
-                         },), ],),
+                         },),
+                          ListTile(
+                           title:Text('practical 3'),
+                           onTap: (){
+                             Navigator.pop(context);
+                             Navigator.push(context,new MaterialPageRoute(builder :(context)=>new Practical3()));
+                           }
+                         ),
+                         ListTile(
+                           title:Text('practical 3'),
+                           onTap: (){
+                             Navigator.pop(context);
+                             Navigator.push(context,new MaterialPageRoute(builder :(context)=>new Practical4()));
+                           }
+                         )
+                          ],
+                        
+                         ),
 
                            
                          
@@ -127,4 +144,97 @@ class _Practical2State extends State<Practical2>{
     );
   }
 
+}
+class Practical3 extends StatelessWidget {
+  @override
+  int a=0;
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar( title:Text('Practical3'),),
+      drawer: new DrawerOnly(),
+      body: Center(child: ListView(
+        children: <Widget>[
+          RaisedButton(
+            child:Text('toast') ,
+            onPressed: showtoast,
+            ),
+             RaisedButton(
+            child:Text('Stoptoast') ,
+            onPressed:(){
+              a=1;
+            },
+            )
+        ],
+      ),)
+    );
+  }
+  void showtoast(){
+    Timer.periodic(Duration(seconds: 10), (timer)  {
+       Fluttertoast.showToast(
+                        msg: 'hello this is toast message',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIos: 3,
+                        backgroundColor: Colors.blue,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                      );
+                      if(a==1)
+                      {
+                        timer.cancel();
+                      }
+});
+  }
+}
+class Practical4 extends StatefulWidget{ 
+_Practical4State createState()=>_Practical4State();
+}
+class _Practical4State extends State<Practical4>{
+  
+  double var1=0;
+  double val=0;
+  String total='0';
+  void showtoast(){
+    val=var1*(9/5)+32;
+    total=val.toString();
+    Fluttertoast.showToast(
+                        msg: total,
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIos: 3,
+                        backgroundColor: Colors.blue,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                      );
+  }
+ 
+   @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      
+      appBar: new AppBar(title: Text('Practical 2'),),
+      drawer: new DrawerOnly(),
+      body:Center(
+        child:ListView(
+          children: <Widget>[
+            TextField(decoration: InputDecoration(
+              border:OutlineInputBorder() ,
+              hintText: 'Enter Temp in celsius', 
+            ),
+            keyboardType: TextInputType.number,
+            onChanged: (val){
+              var1=double.parse(val);
+            },
+            ),
+            
+            RaisedButton(
+              child: Text('Convert'),
+              onPressed:showtoast,
+
+            ),
+          ],
+        ) ,
+        )
+    );
+  }
 }
