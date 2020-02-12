@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:async';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 void main()=> runApp(MyApp());
 class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
@@ -92,6 +93,12 @@ class DrawerOnly extends StatelessWidget{
                          onTap: (){
                             Navigator.pop(context);
                             Navigator.push(context,new MaterialPageRoute(builder :(context)=>new Practical8())); 
+                         },), 
+                          ListTile(
+                           title: Text('practical 9'),
+                         onTap: (){
+                            Navigator.pop(context);
+                            Navigator.push(context,new MaterialPageRoute(builder :(context)=>new Practical9())); 
                          },)
                           ],
                         
@@ -472,6 +479,26 @@ class _Practical8State extends State<Practical8> {
           children: containers,
         ),
       ),
+    );
+  }
+}
+
+class Practical9 extends StatefulWidget {
+  Practical9({Key key}) : super(key: key);
+
+  @override
+  _Practical9State createState() => _Practical9State();
+}
+
+class _Practical9State extends State<Practical9> {
+  @override
+  Widget build(BuildContext context) {
+    return WebviewScaffold(
+      appBar: AppBar(
+        title: Text("Browser"),
+      ),
+      url: "https://www.google.com/"
+      
     );
   }
 }
